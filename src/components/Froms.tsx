@@ -23,7 +23,7 @@ const Froms = () => {
                         </select>
                     </div>
                     <h1 className={`${display==='none' ? 'block' : 'hidden'} mt-10 text-xl font-semibold text-center text-primary`}>من فضلك اختار خدمة</h1>
-                    <Marriage display={display} register={register} errors={errors}/>
+                    <Marriage display={display}/>
                     <div className={`${display !== "none"? "block" :"hidden"} w-[300px] flex justify-end`}>
                         <button className="p-1 px-3 rounded bg-primary text-fives">ارسل</button>
                     </div>

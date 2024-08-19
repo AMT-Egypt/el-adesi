@@ -1,12 +1,11 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 interface IProp {
     display: string;
-    register:any;
-    errors: any;
+    // register:any;
+    // errors: any;
 }
 
-const Marriage = ({display,register,errors}:IProp) => {
+const Marriage = ({display}:IProp) => {
     return (
         <div className={`${display==="Marriage"? "block" : "hidden"}`}>
             <h1>Marriage</h1>
