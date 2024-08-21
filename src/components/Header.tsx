@@ -1,9 +1,9 @@
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import logo from "../assets/images/logo.jpg"
 
 const Header = () => {
     const myUrl = useNavigate()
-    const logout = ()=>{
+    const logout = () => {
         localStorage.removeItem("userToken")
         myUrl("/login")
     }
@@ -17,10 +17,18 @@ const Header = () => {
                     </div>
                     <div className="flex items-center gap-10">
                         <ul className="flex gap-6 list-none text-fives">
-                            <li><a href="/Main">الصفحة الرئيسية</a></li>
-                            <li><a href="/Main/services">الخدمات</a></li>
+                            <li>
+                                <Link to="/Main">
+                                    الصفحه الرئيسيه
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/Main/services">
+                                    الخدمات
+                                </Link>
+                            </li>
                         </ul>
-                        <button onClick={()=>logout()} className="text-fives">تسجيل خروج</button>
+                        <button onClick={() => logout()} className="text-fives">تسجيل خروج</button>
                     </div>
                 </div>
             </div>
