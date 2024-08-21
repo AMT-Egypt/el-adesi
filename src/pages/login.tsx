@@ -2,18 +2,20 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import InputEmail from "../modules/form/InputEmail";
+import InputPassword from "../modules/form/InputPassword";
 
 const Login = () => {
     const myUrl = useNavigate()
-    const [errorLog,setLog] = useState(false)
-    const {register,handleSubmit,formState:{errors}} = useForm()
-    const onSubmit = (data:any)=>{
+    const [errorLog, setLog] = useState(false)
+    const { register, handleSubmit, formState: { errors } } = useForm()
+    const onSubmit = (data: any) => {
         console.log(data)
-        if(data.email === "admin@gmail.com" && data.password ==="montaser2024"){
+        if (data.email === "admin@gmail.com" && data.password === "montaser2024") {
             localStorage.userToken = "true"
             myUrl("/main")
         }
-        else{
+        else {
             setLog(true)
         }
     }
@@ -24,16 +26,8 @@ const Login = () => {
                     <h1 className="mb-2 text-xl text-center text-secondary">تسجيل دخول</h1>
                     {errorLog && <p className="text-sm text-red-500">بيانات الدخول غير صحيحة</p>}
                     <form action="" onSubmit={handleSubmit(onSubmit)}>
-                        <div>
-                            <label htmlFor="email" className="text-secondary">الايميل</label>
-                            <input type="email" {...register("email", { required: true })} id="email" name="email" className="w-full p-2 mt-2 border rounded-md outline-none" />
-                            {errors.email?.type==="required" && <p className="text-sm text-red-500">من فضلك ادخل الايميل</p>}
-                        </div>
-                        <div className="my-3">
-                            <label htmlFor="password" className="text-secondary">كلمة المرور</label>
-                            <input type="password" {...register("password", { required: true })} id="password" name="password" className="w-full p-2 mt-2 border rounded-md outline-none" />
-                            {errors.password?.type==="required" && <p className="text-sm text-red-500">من فضلك ادخل كلمة المرور</p>}
-                        </div>
+                        <InputEmail errors={errors} register={register} />
+                        <InputPassword errors={errors} register={register} />
                         <div className="flex justify-center">
                             <button className="p-2 rounded-md bg-secondary text-primary">تسجيل</button>
                         </div>
