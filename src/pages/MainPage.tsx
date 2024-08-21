@@ -1,13 +1,9 @@
-import Footer from "../components/Footer";
 import Froms from "../components/Froms";
-import Header from "../components/Header";
 
 const MainPage = () => {
     return (
-        <div className='min-h-screen'>
-            <Header/>
+        <div>
             <Froms/>
-            <Footer/>
         </div>
     );
 }
