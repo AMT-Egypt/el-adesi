@@ -17,8 +17,8 @@ const Header = () => {
                     </div>
                     <div className="flex items-center gap-10">
                         <ul className="flex gap-6 list-none text-fives">
-                            <li><a href="#/">الصفحة الرئيسية</a></li>
-                            <li><a href="#/">الخدمات</a></li>
+                            <li><a href="/Main">الصفحة الرئيسية</a></li>
+                            <li><a href="/Main/services">الخدمات</a></li>
                         </ul>
                         <button onClick={()=>logout()} className="text-fives">تسجيل خروج</button>
                     </div>
