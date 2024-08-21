@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Navigate to={"login"} />} />
         <Route path='/login' element={<Login />} />
-        <Route element={<ProtectRoutes/>}>
+        <Route element={<ProtectRoutes />}>
           <Route path='/main' element={<MainPage />} />
         </Route>
       </Routes>
