@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import NavBarService from "../components/NavBarService";
 import { fetchIllnessData } from "../functions/apis/getIllness";
 import { fetchMarriageData } from "../functions/apis/getMarriage";
 import Carts from "../modules/details/Carts";
+import { typeState } from "../types/storeType";
 import { illnessDataType, marriageDataType } from "../types/typesData";
 
 export default function Services() {
@@ -11,10 +13,11 @@ export default function Services() {
   const [allData, setAllData] = useState<(illnessDataType | marriageDataType)[]>([])
   const [filter, setFilter] = useState<string>("all")
   const [search, setSearch] = useState<string>("")
+  const deleteState = useSelector((state: typeState) => state.user.delete)
   useEffect(() => {
     fetchIllnessData(setDataIllness)
     fetchMarriageData(setDataMarriage)
-  }, [])
+  }, [deleteState])
   useEffect(() => {
     setAllData([...dataIllness, ...dataMarriage])
   }, [dataIllness, dataMarriage])
