@@ -4,7 +4,8 @@ import { UserState } from '../../types/storeType';
 const initialState: UserState = {
     searchValue: "",
     filterValue: "",
-    typeService: ""
+    typeService: "",
+    delete: true
 };
 
 export const userSlice = createSlice({
@@ -14,9 +15,12 @@ export const userSlice = createSlice({
         setTypeService: (state, action: PayloadAction<string>) => {
             state.typeService = action.payload
         },
+        setDelete: (state) => {
+            state.delete = !state.delete
+        }
     },
 });
 
-export const { setTypeService } = userSlice.actions;
+export const { setTypeService, setDelete } = userSlice.actions;
 
 export default userSlice.reducer;
