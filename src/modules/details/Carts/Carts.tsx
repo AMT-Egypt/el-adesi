@@ -12,9 +12,10 @@ export default function Carts({ allData }: CartsProps) {
           <p>
             من فضلك قم ب اضافه بعض الخدمات
           </p> :
-          allData.map(({ fullName, nationalID, serviceType }, index) => {
+          allData.map(({ fullName, nationalID, serviceType, id }, index) => {
             return (
               <OneCart
+                id={id}
                 fullName={fullName}
                 nationalID={nationalID}
                 serviceType={serviceType}
