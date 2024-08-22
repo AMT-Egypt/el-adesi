@@ -16,10 +16,10 @@ const Froms = () => {
                 <form onSubmit={handleSubmit(onSubmit)} className="mt-3">
                     <div>
                         <label htmlFor="kind" className="text-primary">نوع الخدمة</label><br/>
-                        <select {...register("type")} name="type" onChange={(e)=>setDisplay(e.target.value)} className="w-[300px] border px-3 outline-none rounded h-10 mt-2" id="kind">
+                        <select {...register("serveiceType")} name="serveiceType" onChange={(e)=>setDisplay(e.target.value)} className="w-[300px] border px-3 outline-none rounded h-10 mt-2" id="kind">
                             <option value="none">اختار خدمة</option>
-                            <option value="Marriage">الزواج</option>
-                            <option value="Illness">المرض</option>
+                            <option value="marriage">الزواج</option>
+                            <option value="illness">المرض</option>
                         </select>
                     </div>
                     <h1 className={`${display==='none' ? 'block' : 'hidden'} mt-10 text-xl font-semibold text-center text-primary`}>من فضلك اختار خدمة</h1>
