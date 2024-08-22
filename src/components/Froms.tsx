@@ -2,12 +2,15 @@
 import { useState } from "react";
 import Marriage from "./Marriage/Marriage";
 import { useForm } from "react-hook-form";
+import { addItem } from "../functions/apis/addItem";
 
 const Froms = () => {
     const [display,setDisplay] = useState("none")
+    const [allNeeds, setNeeds] = useState<any[]>([])
     const {register,handleSubmit,formState:{errors}} = useForm()
     const onSubmit = (data:any)=>{
-        console.log(data)
+        console.log({...data,estimatedBudget:allNeeds})
+        addItem(data.serveiceType,{...data,estimatedBudget:allNeeds})
     }
     return (
         <div className="flex justify-center min-h-[81.5vh] py-6 bg-secondary">
@@ -23,7 +26,7 @@ const Froms = () => {
                         </select>
                     </div>
                     <h1 className={`${display==='none' ? 'block' : 'hidden'} mt-10 text-xl font-semibold text-center text-primary`}>من فضلك اختار خدمة</h1>
-                    <Marriage display={display} register={register} errors={errors}/>
+                    <Marriage display={display} register={register} errors={errors} setNeeds={setNeeds}/>
                     <div className={`${display !== "none"? "block" :"hidden"} w-[300px] flex justify-end mt-4`}>
                         <button className="p-1 px-3 rounded bg-primary text-fives">ارسل</button>
                     </div>

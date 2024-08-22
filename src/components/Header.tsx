@@ -25,12 +25,12 @@ const Header = () => {
                     <div className={`absolute ${display} flex-col items-start gap-3 left-2 top-20 z-10 bg-primary p-3 rounded-md sm:p-0 sm:relative sm:left-0 sm:top-0 sm:flex sm:flex-row sm:items-center sm:gap-10`}>
                         <ul className="flex flex-col gap-3 sm:flex-row sm:gap-6 list-none text-fives">
                             <li>
-                                <Link to="/Main">
+                                <Link to="/main">
                                     الصفحه الرئيسيه
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/Main/services">
+                                <Link to="/main/services">
                                     الخدمات
                                 </Link>
                             </li>
