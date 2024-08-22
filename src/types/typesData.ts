@@ -28,7 +28,7 @@ export type marriageDataType = {
     }[],
     researcherOpinion: string,
     researcher: string,
-    serveiceType: "illness" | "marriage",
+    serviceType: "illness" | "marriage",
 }
 export type illnessDataType = {
     id: string,
@@ -56,5 +56,5 @@ export type illnessDataType = {
     }[],
     researcherOpinion: string,
     researcher: string,
-    serveiceType: "illness" | "marriage",
+    serviceType: "illness" | "marriage",
 }
