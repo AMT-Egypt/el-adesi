@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useForm } from "react-hook-form"
-import { addItem } from "../../functions/apis/addItem"
+// import { addItem } from "../../functions/apis/addItem"
 import EstimatedBudget from "../Marriage/EstimatedBudget"
 import FamilyInfo from "../Marriage/FamilyInfo"
 import HouseAndNeeds from "../Marriage/HouseAndNeeds"
@@ -13,9 +13,9 @@ const Illness = ({display}:{display:string}) => {
     const [allNeeds, setNeeds] = useState<any[]>([])
     const {register,handleSubmit,formState:{errors}} = useForm()
     const onSubmit = (data:any)=>{
-        const allData = {...data,estimatedBudget:allNeeds,serviceType:"illness"}
+        const allData = {...data,Items:allNeeds,Status:"المرض"}
         console.log(allData)
-        addItem("illness",allData)
+        // addItem(allData)
     }
     return (
         <div className={`${display==="illness"? "block" : "hidden"}`}>

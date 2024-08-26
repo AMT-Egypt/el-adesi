@@ -29,7 +29,13 @@ const EstimatedBudget = ({setNeeds}:{setNeeds:any}) => {
         else{
             const data = {item,number,unitPrice,total}
             setAll(prev=>[...prev,data])
-            setNeeds((prev:any)=>[...prev,data])
+            const needsData = {
+                item,
+                number,
+                PriceItem:unitPrice,
+                Total:total
+            }
+            setNeeds((prev:any)=>[...prev,needsData])
         }
     }
     console.log(AllData)

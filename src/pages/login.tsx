@@ -13,7 +13,7 @@ const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm()
     const dispatch = useDispatch()
     const onSubmit = (data: any) => {
-        console.log(data)
+        // console.log(data)
         fetchLogin(data,setLog,myUrl,dispatch)
         // if (data.email === "admin@gmail.com" && data.password === "montaser2024") {
         //     localStorage.userToken = "true"

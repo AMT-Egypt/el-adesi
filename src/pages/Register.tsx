@@ -8,7 +8,7 @@ const Register = () => {
     const myUrl = useNavigate()
     const { register, handleSubmit, formState: { errors } } = useForm()
     const onSubmit = (data: any) => {
-        console.log(data)
+        // console.log(data)
         fetchRegister(data,myUrl)
     }
     return (

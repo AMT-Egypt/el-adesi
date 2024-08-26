@@ -1,10 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
+import Cookie from "cookie-universal";
 
-type Services = "illness" | "marriage"
-
-export const addItem = (serviceType: Services,data:any) => {
-    axios.post(`https://json-server-jade-two.vercel.app/${serviceType}`,{...data})
+export const addItem = (data:any) => {
+    const token = Cookie().get("token");
+    axios.post(`https://grotesque-gerianna-msafa-9bf726f7.koyeb.app/api/services`,{...data},{
+        headers:{
+            "Authorization": `Bearer ${token}`,
+            "Accept": "application/json",
+            "Content-Type" : "application/json",
+        }
+    })
     .then((res)=>console.log(res))
     .catch((err)=>console.log(err))
 }

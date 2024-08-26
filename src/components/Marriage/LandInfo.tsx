@@ -17,15 +17,15 @@ const LandInfo = ({register,errors}:IProp) => {
                     <h3 className="text-primary text-base">هل يمتلك حيازه زراعية؟</h3>
                     <div>
                         <div className="flex items-center gap-1">
-                            <input value={"true"} onInput={()=>setLand("true")} {...register("agriculturalHolding", { required: true })} type="radio" name="agriculturalHolding" id="yes" />
+                            <input value={"true"} onInput={()=>setLand("true")} {...register("DoesHeOwnAgriculturalProperty", { required: true })} type="radio" name="DoesHeOwnAgriculturalProperty" id="yes" />
                             <label htmlFor="yes">نعم</label>
                         </div>
                         <div className="flex items-center gap-1">
-                            <input value={"false"}  onInput={()=>setLand("false")} {...register("agriculturalHolding", { required: true })} type="radio" name="agriculturalHolding" id="no" />
+                            <input value={"false"}  onInput={()=>setLand("false")} {...register("DoesHeOwnAgriculturalProperty", { required: true })} type="radio" name="DoesHeOwnAgriculturalProperty" id="no" />
                             <label htmlFor="no">لا</label>
                         </div>
                     </div>
-                    {errors.agriculturalHolding?.type==="required" && <p className="text-sm text-red-500">من فضلك ادخل هل يمتلك حيازه زراعية؟</p>}
+                    {errors.DoesHeOwnAgriculturalProperty?.type==="required" && <p className="text-sm text-red-500">من فضلك ادخل هل يمتلك حيازه زراعية؟</p>}
                 </div>
                 <div className={`${land==="true" ? "block" : "hidden"}`}>
                     <label htmlFor="landArea" className="text-primary">ما مساحه الارض ؟</label><br />
@@ -38,15 +38,15 @@ const LandInfo = ({register,errors}:IProp) => {
                     <h3 className="text-primary text-base">هل يتم زراعة ايه اراضى؟</h3>
                     <div>
                         <div className="flex items-center gap-1">
-                            <input value={"true"} onInput={()=>setLandClut("true")} {...register("landCultivation", { required: true })} type="radio" name="landCultivation" id="yesLand" />
+                            <input value={"true"} onInput={()=>setLandClut("true")} {...register("IsAnyLandBeingCultivated", { required: true })} type="radio" name="IsAnyLandBeingCultivated" id="yesLand" />
                             <label htmlFor="yesLand">نعم</label>
                         </div>
                         <div className="flex items-center gap-1">
-                            <input value={"false"}  onInput={()=>setLandClut("false")} {...register("landCultivation", { required: true })} type="radio" name="landCultivation" id="noLand" />
+                            <input value={"false"}  onInput={()=>setLandClut("false")} {...register("IsAnyLandBeingCultivated", { required: true })} type="radio" name="IsAnyLandBeingCultivated" id="noLand" />
                             <label htmlFor="noLand">لا</label>
                         </div>
                     </div>
-                    {errors.landCultivation?.type==="required" && <p className="text-sm text-red-500">من فضلك ادخل هل يتم زراعة ايه اراضى؟</p>}
+                    {errors.IsAnyLandBeingCultivated?.type==="required" && <p className="text-sm text-red-500">من فضلك ادخل هل يتم زراعة ايه اراضى؟</p>}
                 </div>
                 <div className={`${landClut==="true" ? "block" : "hidden"}`}>
                     <label htmlFor="areaCultivation" className="text-primary">ما مساحه الارض ؟</label><br />
@@ -59,19 +59,19 @@ const LandInfo = ({register,errors}:IProp) => {
                     <h3 className="text-primary text-base">وصف الأرض الزراعية في حال الزراعه</h3>
                     <div>
                         <div className="flex items-center gap-1">
-                            <input value={"ايجار"} {...register("landDescription", { required: true })} type="radio" name="landDescription" id="yesDes" />
+                            <input value={"ايجار"} {...register("DescriptionOfAgriculturalLandInCaseOfCultivation", { required: true })} type="radio" name="DescriptionOfAgriculturalLandInCaseOfCultivation" id="yesDes" />
                             <label htmlFor="yesDes">ايجار</label>
                         </div>
                         <div className="flex items-center gap-1">
-                            <input value={"رهن"} {...register("landDescription", { required: true })} type="radio" name="landDescription" id="noDes" />
+                            <input value={"رهن"} {...register("DescriptionOfAgriculturalLandInCaseOfCultivation", { required: true })} type="radio" name="DescriptionOfAgriculturalLandInCaseOfCultivation" id="noDes" />
                             <label htmlFor="noDes">رهن</label>
                         </div>
                         <div className="flex items-center gap-1">
-                            <input value={"اخري"} {...register("landDescription", { required: true })} type="radio" name="landDescription" id="antDes" />
+                            <input value={"اخري"} {...register("DescriptionOfAgriculturalLandInCaseOfCultivation", { required: true })} type="radio" name="DescriptionOfAgriculturalLandInCaseOfCultivation" id="antDes" />
                             <label htmlFor="antDes">اخري</label>
                         </div>
                     </div>
-                    {errors.landDescription?.type==="required" && <p className="text-sm text-red-500">من فضلك ادخل وصف الأرض الزراعية في حال الزراعه</p>}
+                    {errors.DescriptionOfAgriculturalLandInCaseOfCultivation?.type==="required" && <p className="text-sm text-red-500">من فضلك ادخل وصف الأرض الزراعية في حال الزراعه</p>}
                 </div>
             </div>
         </div>

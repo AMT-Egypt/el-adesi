@@ -9,7 +9,7 @@ import HouseAndNeeds from "./HouseAndNeeds";
 import EstimatedBudget from "./EstimatedBudget";
 import Research from "./Research";
 import { useState } from "react";
-import { addItem } from "../../functions/apis/addItem";
+// import { addItem } from "../../functions/apis/addItem";
 
 interface IProp {
     display: string;
@@ -19,9 +19,9 @@ const Marriage = ({display}:IProp) => {
     const [allNeeds, setNeeds] = useState<any[]>([])
     const {register,handleSubmit,formState:{errors}} = useForm()
     const onSubmit = (data:any)=>{
-        console.log({...data,estimatedBudget:allNeeds,serviceType:"marriage"})
-        const allData = {...data,estimatedBudget:allNeeds,serviceType:"marriage"}
-        addItem("marriage",allData)
+        const allData = {...data,Items:allNeeds,Status:"الزواج"}
+        console.log(allData)
+        // addItem(allData)
     }
     return (
         <div className={`${display==="marriage"? "block" : "hidden"}`}>
