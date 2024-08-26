@@ -1,14 +1,28 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Link, useNavigate } from "react-router-dom"
 import logo from "../assets/images/logo.jpg"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import Cookie from "cookie-universal"
+import { useDispatch, useSelector } from "react-redux"
+import { addUser, deleteUser } from "../store/user/userInfo"
 
 const Header = () => {
+    const userInfo = useSelector((state:any)=>state.userInfo)
+    const dispatch = useDispatch()
     const [display,setDisplay] = useState("hidden")
     const myUrl = useNavigate()
+    const cook = Cookie()
     const logout = () => {
-        localStorage.removeItem("userToken")
+        cook.remove("user")
+        cook.remove("token")
+        dispatch(deleteUser())
         myUrl("/login")
     }
+    console.log("user => ",userInfo)
+    useEffect(()=>{
+        dispatch(addUser(cook.get("user")))
+    },[])
     return (
         <div className="flex justify-center w-full py-3 bg-primary">
             <div className="container">

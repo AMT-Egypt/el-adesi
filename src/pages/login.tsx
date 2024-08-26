@@ -1,23 +1,27 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/images/logo.jpg";
 import InputEmail from "../modules/form/InputEmail";
 import InputPassword from "../modules/form/InputPassword";
+import { fetchLogin } from "../functions/apis/login";
+import { useDispatch } from 'react-redux';
 const Login = () => {
     const myUrl = useNavigate()
     const [errorLog, setLog] = useState(false)
     const { register, handleSubmit, formState: { errors } } = useForm()
+    const dispatch = useDispatch()
     const onSubmit = (data: any) => {
         console.log(data)
-        if (data.email === "admin@gmail.com" && data.password === "montaser2024") {
-            localStorage.userToken = "true"
-            myUrl("/main")
-        }
-        else {
-            setLog(true)
-        }
+        fetchLogin(data,setLog,myUrl,dispatch)
+        // if (data.email === "admin@gmail.com" && data.password === "montaser2024") {
+        //     localStorage.userToken = "true"
+        //     myUrl("/main")
+        // }
+        // else {
+        //     setLog(true)
+        // }
     }
     return (
         <div className="flex flex-col items-center justify-center gap-4 w-full min-h-screen bg-fives">
@@ -33,6 +37,9 @@ const Login = () => {
                             <button className="p-2 rounded-md bg-secondary text-primary">تسجيل</button>
                         </div>
                     </form>
+                    <div className="flex justify-center mt-5 text-secondary">
+                        ليس لديك حساب؟ <Link to={"/register"} className="mr-2 text-green-500 underline">انشئ حساب</Link>
+                    </div>
                 </div>
             </div>
             <p className="text-primary">
