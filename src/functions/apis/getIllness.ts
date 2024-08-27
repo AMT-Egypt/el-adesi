@@ -1,16 +1,22 @@
-import React, { SetStateAction } from "react";
 import { illnessDataType } from "../../types/typesData";
 
-export const fetchIllnessData = async (setData: React.Dispatch<SetStateAction<illnessDataType[]>>) => {
+export const fetchIllnessData = async (userName: string, token: string) => {
     try {
-        const response = await fetch('https://json-server-jade-two.vercel.app/illness');
+        // setData: React.Dispatch<SetStateAction<illnessDataType[]>>,
+        const response = await fetch(`https://grotesque-gerianna-msafa-9bf726f7.koyeb.app/api/services?populate=*&filters[users][username][$eq]=${userName}`, {
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+            }
+        });
 
         if (!response.ok) {
             throw new Error(`Error: ${response.status}`);
         }
 
         const data: illnessDataType[] = await response.json();
-        setData(data);  // You can handle the data here
+        console.log(data);  // You can handle the data here
     } catch (error) {
         console.error('Error fetching data:', error);
     }

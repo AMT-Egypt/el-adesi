@@ -5,6 +5,18 @@ export interface UserState {
     delete: boolean
 }
 
+export interface UserInfo {
+    blocked: boolean,
+    confirmed: boolean,
+    createdAt: string,
+    email: string,
+    id: null | number,
+    provider: string,
+    updatedAt: string,
+    username: string
+}
+
 export type typeState = {
-    user: UserState
+    user: UserState,
+    userInfo: UserInfo
 }

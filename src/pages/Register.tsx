@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Link, useNavigate } from "react-router-dom"
-import { useForm } from "react-hook-form"
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/images/logo.jpg";
 import { fetchRegister } from "../functions/apis/register";
 
@@ -9,10 +9,10 @@ const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm()
     const onSubmit = (data: any) => {
         // console.log(data)
-        fetchRegister(data,myUrl)
+        fetchRegister(data, myUrl)
     }
     return (
-        <div className="flex flex-col items-center justify-center gap-4 w-full min-h-screen bg-fives">
+        <div className="flex flex-col items-center justify-center gap-4 w-full min-h-screen bg-fives py-8">
             <img className="w-40 rounded-xl border border-solid border-primary" src={logo} alt="العديسي" />
             <div className="container flex justify-center">
                 <div className="p-4 px-5 rounded-md bg-primary w-[500px]">
@@ -30,7 +30,7 @@ const Register = () => {
                         </div>
                         <div className="mt-3">
                             <label htmlFor="password" className="text-secondary">كلمة المرور</label>
-                            <input type="password" {...register("password", { required: true,minLength:6})} id="password" name="password" className="w-full p-2 mt-2 border rounded-md outline-none" />
+                            <input type="password" {...register("password", { required: true, minLength: 6 })} id="password" name="password" className="w-full p-2 mt-2 border rounded-md outline-none" />
                             {errors.password?.type === "required" && <p className="text-sm text-red-500">من فضلك كلمة المرور</p>}
                             {errors.password?.type === "minLength" && <p className="text-sm text-red-500">كلمة المرور يجب ان لا تقل عن 6 حروف</p>}
                         </div>
