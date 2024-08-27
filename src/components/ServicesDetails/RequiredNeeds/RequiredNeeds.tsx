@@ -1,17 +1,17 @@
-import { illnessDataType, marriageDataType } from "../../../types/typesData";
+import { ServiceDataType } from "../../../types/typesData";
 
 export type RequiredNeedsProps = {
-  data: illnessDataType | marriageDataType
+  data: ServiceDataType
 };
 export default function RequiredNeeds({ data }: RequiredNeedsProps) {
-  const { requiredNeeds, estimatedBudget } = data
-  const totalSum = estimatedBudget.reduce((acc, curr) => acc + +curr.total, 0);
+  const { Requirements, Items } = data
+  const totalSum = Items.reduce((acc, curr) => acc + +curr.Total, 0);
   return (
     <div className="w-full flex flex-col gap-2">
       <p className="font-semibold">الاحتياجات المطلوبة</p>
       <div className="grid grid-cols-1 gap-y-1">
         <p>
-          الوصف : {requiredNeeds}
+          الوصف : {Requirements}
         </p>
       </div>
       <p className="font-semibold">
@@ -19,10 +19,10 @@ export default function RequiredNeeds({ data }: RequiredNeedsProps) {
       </p>
       <ul>
         {
-          estimatedBudget.map(({ item, number, total, unitPrice }, index) => {
+          Items.map(({ item, number, Total, PriceItem }, index) => {
             return (
               <li key={index}>
-                تريد عدد {number} من {item} سعر الواحده منه {unitPrice} فيكون السعر الاجمالي {total}
+                تريد عدد {number} من {item} سعر الواحده منه {PriceItem} فيكون السعر الاجمالي {Total}
               </li>
             )
           })

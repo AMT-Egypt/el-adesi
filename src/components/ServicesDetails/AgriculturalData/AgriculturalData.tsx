@@ -1,28 +1,28 @@
-import { illnessDataType, marriageDataType } from "../../../types/typesData";
+import { ServiceDataType } from "../../../types/typesData";
 
 export type AgriculturalDataProps = {
-  data: illnessDataType & marriageDataType
+  data: ServiceDataType
 };
 export default function AgriculturalData({ data }: AgriculturalDataProps) {
-  const { agriculturalHolding, landArea, landCultivation, areaCultivation, landDescription } = data
+  const { DoesHeOwnAgriculturalProperty, landArea, IsAnyLandBeingCultivated, areaCultivation, DescriptionOfAgriculturalLandInCaseOfCultivation } = data
   return (
     <div className="w-full flex flex-col gap-2">
       <p className="font-semibold">بيانات الاراضي الزراعية</p>
       <div className="grid sm:grid-cols-2 grid-cols-1 gap-y-1">
         {
-          agriculturalHolding &&
+          DoesHeOwnAgriculturalProperty &&
           <p>
             مساحه الارض: {landArea}
           </p>
         }
         {
-          landCultivation &&
+          IsAnyLandBeingCultivated &&
           <p>
             مساحه الزرع: {areaCultivation}
           </p>
         }
         <p>
-          وصف الزرع : {landDescription}
+          وصف الزرع : {DescriptionOfAgriculturalLandInCaseOfCultivation}
         </p>
       </div>
     </div>

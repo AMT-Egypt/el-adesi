@@ -11,12 +11,12 @@ import PersonalData from "../components/ServicesDetails/PersonalData";
 import RequiredNeeds from "../components/ServicesDetails/RequiredNeeds";
 import { fetchOneData } from "../functions/apis/getOne";
 import { typeState } from "../types/storeType";
-import { illnessDataType, marriageDataType } from "../types/typesData";
+import { ServiceDataType } from "../types/typesData";
 
 const ServicesDetails = () => {
     const { id } = useParams()
     const typeService = useSelector((state: typeState) => state.user.typeService)
-    const [data, setData] = useState<illnessDataType & marriageDataType>()
+    const [data, setData] = useState<ServiceDataType>()
 
     useEffect(() => {
         if (id) {
@@ -33,7 +33,7 @@ const ServicesDetails = () => {
                         <PersonalData data={data} />
                         <IncomeData data={data} />
                         <FamilyData data={data} />
-                        {data.serviceType == "illness" ? <DiseaseDetails data={data} /> : <AgriculturalData data={data} />}
+                        {data.Status == "المرض" ? <DiseaseDetails data={data} /> : <AgriculturalData data={data} />}
                         <HouseDescription data={data} />
                         <RequiredNeeds data={data} />
                         <FooterServicesDetails data={data} />

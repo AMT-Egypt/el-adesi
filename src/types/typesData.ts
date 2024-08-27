@@ -20,13 +20,13 @@ export type ServiceDataType = {
     ResearcherSaw: string,
     Researcher: string,
     Status: "الزواج" | "المرض",
-    estimatedBudget: {
+    Items: {
         item: string,
         number: number,
         PriceItem: number,
         Total: number,
     }[],
-    landArea: string,
-    areaCultivation: string,
-    caseData: string,
+    landArea: string | null,
+    areaCultivation: string | null,
+    caseData: string | null,
 }

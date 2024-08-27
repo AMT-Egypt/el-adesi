@@ -1,34 +1,34 @@
-import { illnessDataType, marriageDataType } from "../../../types/typesData";
+import { ServiceDataType } from "../../../types/typesData";
 
 export type PersonalDataProps = {
-  data: illnessDataType | marriageDataType
+  data: ServiceDataType
 };
 export default function PersonalData({ data }: PersonalDataProps) {
-  const { fullName, nationalID, date, address, phoneNumber, familyName, jop } = data
+  const { QuadNameProvided, NationalNumberProvided, SubmissionDate, AdressProvided, phoneNumberProvided, BreadwinnerNameProvided, WorkProvided } = data
   return (
     <div className="w-full flex flex-col gap-2">
       <p className="font-semibold">البيانات الشخصيه</p>
       <div className="grid sm:grid-cols-2 grid-cols-1 gap-y-1">
         <p>
-          الاسم : {fullName}
+          الاسم : {QuadNameProvided}
         </p>
         <p>
-          الرقم القومي : {nationalID}
+          الرقم القومي : {NationalNumberProvided}
         </p>
         <p>
-          تاريخ تقديم الطلب : {date}
+          تاريخ تقديم الطلب : {SubmissionDate}
         </p>
         <p>
-          العنوان بالتفصيل : {address}
+          العنوان بالتفصيل : {AdressProvided}
         </p>
         <p>
-          رقم الموبايل : {phoneNumber}
+          رقم الموبايل : {phoneNumberProvided}
         </p>
         <p>
-          اسم عائل الاسره : {familyName}
+          اسم عائل الاسره : {BreadwinnerNameProvided}
         </p>
         <p>
-          الوظيفة : {jop}
+          الوظيفة : {WorkProvided}
         </p>
       </div>
     </div>

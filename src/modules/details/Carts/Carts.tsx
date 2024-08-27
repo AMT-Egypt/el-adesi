@@ -1,8 +1,8 @@
-import { illnessDataType, marriageDataType } from "../../../types/typesData";
+import { ServiceDataType } from "../../../types/typesData";
 import OneCart from "../OneCart";
 
 export type CartsProps = {
-  allData: (illnessDataType | marriageDataType)[]
+  allData: (ServiceDataType)[]
 };
 export default function Carts({ allData }: CartsProps) {
   return (
@@ -12,13 +12,13 @@ export default function Carts({ allData }: CartsProps) {
           <p>
             من فضلك قم ب اضافه بعض الخدمات
           </p> :
-          allData.map(({ fullName, nationalID, serviceType, id }, index) => {
+          allData.map(({ QuadNameProvided, NationalNumberProvided, Status }, index) => {
             return (
               <OneCart
                 id={id}
-                fullName={fullName}
-                nationalID={nationalID}
-                serviceType={serviceType}
+                fullName={QuadNameProvided}
+                nationalID={NationalNumberProvided}
+                serviceType={Status}
                 key={index} />
             )
           })

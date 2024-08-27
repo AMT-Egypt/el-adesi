@@ -1,22 +1,22 @@
-import { illnessDataType, marriageDataType } from "../../../types/typesData";
+import { ServiceDataType } from "../../../types/typesData";
 
 export type FamilyDataProps = {
-  data: illnessDataType | marriageDataType
+  data: ServiceDataType
 };
 export default function FamilyData({ data }: FamilyDataProps) {
-  const { wifeName, wifeNationalID, numberChildren } = data
+  const { husbandFamily, NationalNumberFamily, NumberOfChildren } = data
   return (
     <div className="w-full flex flex-col gap-2">
       <p className="font-semibold">بيانات الاسرة</p>
       <div className="grid sm:grid-cols-2 grid-cols-1 gap-y-1">
         <p>
-          اسم الزوجه : {wifeName}
+          اسم الزوجه : {husbandFamily}
         </p>
         <p>
-          رقم القومي الخاص بالزوجه : {wifeNationalID}
+          رقم القومي الخاص بالزوجه : {NationalNumberFamily}
         </p>
         <p>
-          عدد الابناء : {numberChildren}
+          عدد الابناء : {NumberOfChildren}
         </p>
       </div>
     </div>

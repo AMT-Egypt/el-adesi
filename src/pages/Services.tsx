@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import NavBarService from "../components/NavBarService";
 import Carts from "../modules/details/Carts";
 import { GetServiceData } from "../functions/apis/getServices";
-import { illnessDataType } from "../types/typesData";
+import { ServiceDataType } from "../types/typesData";
 
 export default function Services() {
-  const [data, setData] = useState<illnessDataType>([])
+  const [data, setData] = useState<ServiceDataType[]>([])
   const setFilter = ()=>{}
   const setSearch = ()=>{}
   useEffect(()=>{

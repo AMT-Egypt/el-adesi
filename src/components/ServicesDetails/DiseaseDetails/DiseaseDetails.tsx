@@ -1,7 +1,7 @@
-import { illnessDataType, marriageDataType } from "../../../types/typesData";
+import { ServiceDataType } from "../../../types/typesData";
 
 export type DiseaseDetailsProps = {
-  data: illnessDataType & marriageDataType
+  data: ServiceDataType
 };
 export default function DiseaseDetails({ data }: DiseaseDetailsProps) {
   const { caseData } = data
