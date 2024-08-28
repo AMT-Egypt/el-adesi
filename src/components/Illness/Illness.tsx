@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useForm } from "react-hook-form"
-// import { addItem } from "../../functions/apis/addItem"
+import { addItem } from "../../functions/apis/addItem"
 import EstimatedBudget from "../Marriage/EstimatedBudget"
 import FamilyInfo from "../Marriage/FamilyInfo"
 import HouseAndNeeds from "../Marriage/HouseAndNeeds"
@@ -8,14 +8,40 @@ import MonthlyIcome from "../Marriage/MonthlyIcome"
 import PersonalInfo from "../Marriage/PersonalInfo"
 import Research from "../Marriage/Research"
 import { useState } from "react"
+// import { useSelector } from "react-redux"
 
 const Illness = ({display}:{display:string}) => {
+    // const userInfo = useSelector((state:any)=>state.userInfo)
     const [allNeeds, setNeeds] = useState<any[]>([])
     const {register,handleSubmit,formState:{errors}} = useForm()
     const onSubmit = (data:any)=>{
-        const allData = {...data,Items:allNeeds,Status:"المرض"}
+        const Needs = allNeeds.map((ele)=>(
+            {
+                item : ele.item,
+                number : +ele.number,
+                PriceItem : +ele.PriceItem,
+                Total : +ele.Total,
+            }
+        ))
+        console.log(Needs)
+        // console.log(userInfo)
+        const allData = {
+            ...data,
+            Items:Needs,
+            Status:"المرض",
+            areaCultivation:"",
+            landArea:"",
+            DescriptionOfAgriculturalLandInCaseOfCultivation:"",
+            DoesHeOwnAgriculturalProperty:false,
+            IsAnyLandBeingCultivated:false,
+            MonthlyIncome: +data.MonthlyIncome,
+            OtherSources : +data.OtherSources,
+            TotalIncome : +data.TotalIncome,
+            NumberOfChildren : +data.NumberOfChildren,
+            // users : userInfo,
+        }
         console.log(allData)
-        // addItem(allData)
+        addItem(allData)
     }
     return (
         <div className={`${display==="illness"? "block" : "hidden"}`}>
