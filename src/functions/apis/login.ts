@@ -9,7 +9,7 @@ interface IData {
     password:string
 }
 export const fetchLogin = (data:IData,setLog:React.Dispatch<React.SetStateAction<boolean>>,myUrl:NavigateFunction,dispatch:Dispatch<UnknownAction>) => {
-    axios.post(`https://grotesque-gerianna-msafa-9bf726f7.koyeb.app/api/auth/local`,{...data})
+    axios.post(`https://simple-cyndi-ahmedmansour1234-967574d9.koyeb.app/api/auth/local`,{...data})
     .then((res)=>{
         // console.log(res)
         const cook = Cookie()
