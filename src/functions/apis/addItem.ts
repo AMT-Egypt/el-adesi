@@ -7,8 +7,7 @@ export const addItem = (data:any) => {
     axios.post(`https://simple-cyndi-ahmedmansour1234-967574d9.koyeb.app/api/services`,{...data},{
         headers:{
             "Authorization": `Bearer ${token}`,
-            "Accept": "application/json",
-            "Content-Type" : "application/json",
+            "Content-Type":'multipart/form-data',
         }
     })
     .then((res)=>console.log(res))

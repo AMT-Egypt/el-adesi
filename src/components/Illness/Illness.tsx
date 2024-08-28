@@ -8,11 +8,11 @@ import MonthlyIcome from "../Marriage/MonthlyIcome"
 import PersonalInfo from "../Marriage/PersonalInfo"
 import Research from "../Marriage/Research"
 import { useState } from "react"
-// import { useSelector } from "react-redux"
 
 const Illness = ({display}:{display:string}) => {
-    // const userInfo = useSelector((state:any)=>state.userInfo)
     const [allNeeds, setNeeds] = useState<any[]>([])
+    const [image, setImage] = useState<any | null>("")
+    const [errorImage, setErrorImage] = useState<boolean>(false)
     const {register,handleSubmit,formState:{errors}} = useForm()
     const onSubmit = (data:any)=>{
         const Needs = allNeeds.map((ele)=>(
@@ -23,8 +23,10 @@ const Illness = ({display}:{display:string}) => {
                 Total : +ele.Total,
             }
         ))
-        console.log(Needs)
-        // console.log(userInfo)
+        if(!image){
+            setErrorImage(true)
+            return
+        }
         const allData = {
             ...data,
             Items:Needs,
@@ -38,7 +40,7 @@ const Illness = ({display}:{display:string}) => {
             OtherSources : +data.OtherSources,
             TotalIncome : +data.TotalIncome,
             NumberOfChildren : +data.NumberOfChildren,
-            // users : userInfo,
+            NationalNumberImage:image[0]
         }
         console.log(allData)
         addItem(allData)
@@ -46,7 +48,7 @@ const Illness = ({display}:{display:string}) => {
     return (
         <div className={`${display==="illness"? "block" : "hidden"}`}>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <PersonalInfo register={register} errors={errors}/>
+                <PersonalInfo register={register} errors={errors} errorImage={errorImage} setErrorImage={setErrorImage} image={image} setImage={setImage}/>
                 <MonthlyIcome register={register} errors={errors}/>
                 <FamilyInfo register={register} errors={errors}/>
                 <div className="mt-5">
