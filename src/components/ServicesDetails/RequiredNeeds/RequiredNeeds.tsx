@@ -4,7 +4,9 @@ export type RequiredNeedsProps = {
   data: ServiceDataType
 };
 export default function RequiredNeeds({ data }: RequiredNeedsProps) {
-  const { Requirements, Items } = data
+  const { Requirements, Items } = data;
+  console.log(Items);
+  
   const totalSum = Items.reduce((acc, curr) => acc + +curr.Total, 0);
   return (
     <div className="w-full flex flex-col gap-2">
