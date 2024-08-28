@@ -6,13 +6,14 @@ import axios from 'axios';
 
 interface propsInterface {
     setData: React.Dispatch<SetStateAction<ServiceDataType[]>>,
-    userInfo: UserInfo
+    userInfo: UserInfo,
+    Status?: any
 }
 
-export const GetServiceData = async ({setData, userInfo}:propsInterface) => {
+export const GetServiceData = async ({setData, userInfo, Status}:propsInterface) => {
     const token = Cookie().get("token");
     try {
-        const { data } = await axios.get(`https://simple-cyndi-ahmedmansour1234-967574d9.koyeb.app/api/services?populate=*&filters[users][username][$eq]=${userInfo.username}`,{
+        const { data } = await axios.get(`https://simple-cyndi-ahmedmansour1234-967574d9.koyeb.app/api/services?populate=*&filters[users][username][$eq]=${userInfo.username}${Status !== "الكل" ? `&filters[Status][$eq]=${Status}` : ""}`,{
             headers:{
                 "Authorization": `Bearer ${token}`,
             }

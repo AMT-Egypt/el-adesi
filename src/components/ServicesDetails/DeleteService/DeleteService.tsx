@@ -3,8 +3,8 @@ import { deleteItem } from "../../../functions/apis/deleteItem";
 import { setDelete } from "../../../store/user/userSlice";
 
 export type DeleteServiceProps = {
-  id: string,
-  serviceType: "illness" | "marriage"
+  id: number,
+  serviceType: "المرض" | "الزواج"
 };
 export default function DeleteService({ id, serviceType }: DeleteServiceProps) {
   const dispatch = useDispatch()

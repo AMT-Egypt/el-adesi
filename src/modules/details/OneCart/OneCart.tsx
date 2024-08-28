@@ -6,8 +6,8 @@ import { setTypeService } from "../../../store/user/userSlice";
 export type OneCartProps = {
   fullName: string,
   nationalID: string,
-  serviceType: "illness" | "marriage",
-  id: string
+  serviceType: "المرض" | "الزواج",
+  id: number
 };
 export default function OneCart({ fullName, nationalID, serviceType, id }: OneCartProps) {
   const dispatch = useDispatch()

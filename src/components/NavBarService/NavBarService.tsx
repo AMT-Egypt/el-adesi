@@ -18,11 +18,11 @@ export default function NavBarService({ setFilter, setSearch }: NavBarServicePro
         id="countries"
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-primary dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 p-2"
         onChange={(e) => setFilter(e.target.value)}
-        defaultValue="all"
+        defaultValue="الكل"
       >
-        <option value="all">الكل</option>
-        <option value="illness">المرض</option>
-        <option value="marriage">الزواج</option>
+        <option value="الكل">الكل</option>
+        <option value="المرض">المرض</option>
+        <option value="الزواج">الزواج</option>
       </select>
     </div>
   );

@@ -7,7 +7,7 @@ interface DataService {
 }
 
 export type CartsProps = {
-  allData: (DataService)[]
+  allData: DataService[]
 };
 export default function Carts({ allData }: CartsProps) {
   
