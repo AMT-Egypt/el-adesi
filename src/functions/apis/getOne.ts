@@ -1,16 +1,18 @@
+import Cookie from 'cookie-universal';
 import React, { SetStateAction } from "react";
 import { ServiceDataType } from "../../types/typesData";
+import axios from "axios";
 
-export const fetchOneData = async (setData: React.Dispatch<SetStateAction<ServiceDataType | undefined>>, id: string, serviceType: string) => {
+export const fetchOneData = async (setData: React.Dispatch<SetStateAction<ServiceDataType | undefined>>, id: string) => {
+    const token = Cookie().get("token");
     try {
-        const response = await fetch(`https://json-server-jade-two.vercel.app/${serviceType}/${id}`);
+        const { data } = await axios.get(`https://simple-cyndi-ahmedmansour1234-967574d9.koyeb.app/api/services/${id}?populate=*`,{
+            headers:{
+                "Authorization": `Bearer ${token}`,
+            }
+        });
 
-        if (!response.ok) {
-            throw new Error(`Error: ${response.status}`);
-        }
-
-        const data: ServiceDataType = await response.json();
-        setData(data);  // You can handle the data here
+        setData(data.data);  // You can handle the data here
     } catch (error) {
         console.error('Error fetching data:', error);
     }

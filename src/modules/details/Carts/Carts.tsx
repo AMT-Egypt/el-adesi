@@ -1,10 +1,16 @@
 import { ServiceDataType } from "../../../types/typesData";
 import OneCart from "../OneCart";
 
+interface DataService {
+  id: number,
+  attributes: ServiceDataType,
+}
+
 export type CartsProps = {
-  allData: (ServiceDataType)[]
+  allData: (DataService)[]
 };
 export default function Carts({ allData }: CartsProps) {
+  
   return (
     <div className="flex gap-3 w-full flex-wrap">
       {
@@ -12,13 +18,13 @@ export default function Carts({ allData }: CartsProps) {
           <p>
             من فضلك قم ب اضافه بعض الخدمات
           </p> :
-          allData.map(({ QuadNameProvided, NationalNumberProvided, Status }, index) => {
+          allData?.map(({ id, attributes }, index) => {
             return (
               <OneCart
                 id={id}
-                fullName={QuadNameProvided}
-                nationalID={NationalNumberProvided}
-                serviceType={Status}
+                fullName={attributes?.QuadNameProvided}
+                nationalID={attributes?.NationalNumberProvided}
+                serviceType={attributes?.Status}
                 key={index} />
             )
           })
