@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AgriculturalData from "../components/ServicesDetails/AgriculturalData";
@@ -9,11 +10,10 @@ import IncomeData from "../components/ServicesDetails/IncomeData";
 import PersonalData from "../components/ServicesDetails/PersonalData";
 import RequiredNeeds from "../components/ServicesDetails/RequiredNeeds";
 import { fetchOneData } from "../functions/apis/getOne";
-import { ServiceDataType } from "../types/typesData";
 
 const ServicesDetails = () => {
     const { id } = useParams()
-    const [data, setData] = useState<ServiceDataType>()
+    const [data, setData] = useState<any>()
 
     useEffect(() => {
         if (id) {
