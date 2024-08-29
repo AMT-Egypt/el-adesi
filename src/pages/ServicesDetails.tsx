@@ -29,6 +29,9 @@ const ServicesDetails = () => {
             <head>
                 <title>Print</title>
                 <style>
+                .footerService{
+                display: flex
+                }
                 </style>
             </head>
             <body dir="rtl">
