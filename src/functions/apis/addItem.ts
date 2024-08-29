@@ -24,6 +24,7 @@ export const addItem = (data:any,id:number,setLoading:React.Dispatch<React.SetSt
     })
     .then(()=>{
         alert("نجاح","تم اضافة خدماتك بنجاح","success")
+        window.location.reload()
     })
     .catch((err)=>{
         console.log(err)
