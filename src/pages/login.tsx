@@ -7,14 +7,16 @@ import InputEmail from "../modules/form/InputEmail";
 import InputPassword from "../modules/form/InputPassword";
 import { fetchLogin } from "../functions/apis/login";
 import { useDispatch } from 'react-redux';
+import Spinner from "../components/Spinner";
 const Login = () => {
     const myUrl = useNavigate()
     const [errorLog, setLog] = useState(false)
+    const [loading,setLoading] = useState<boolean>(false)
     const { register, handleSubmit, formState: { errors } } = useForm()
     const dispatch = useDispatch()
     const onSubmit = (data: any) => {
         // console.log(data)
-        fetchLogin(data,setLog,myUrl,dispatch)
+        fetchLogin(data,setLog,myUrl,dispatch,setLoading)
         // if (data.email === "admin@gmail.com" && data.password === "montaser2024") {
         //     localStorage.userToken = "true"
         //     myUrl("/main")
@@ -34,7 +36,11 @@ const Login = () => {
                         <InputEmail errors={errors} register={register} />
                         <InputPassword errors={errors} register={register} />
                         <div className="flex justify-center">
-                            <button className="p-2 rounded-md bg-secondary text-primary">تسجيل</button>
+                            <button disabled={loading} className={`p-2 rounded-md bg-secondary text-primary`}>
+                                {
+                                    loading ? <Spinner color={"primary"}/> : "تسجيل"
+                                }
+                            </button>
                         </div>
                     </form>
                     <div className="flex justify-center mt-5 text-secondary">

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import AgriculturalData from "../components/ServicesDetails/AgriculturalData";
@@ -9,17 +10,17 @@ import IncomeData from "../components/ServicesDetails/IncomeData";
 import PersonalData from "../components/ServicesDetails/PersonalData";
 import RequiredNeeds from "../components/ServicesDetails/RequiredNeeds";
 import { fetchOneData } from "../functions/apis/getOne";
-import { ServiceDataType } from "../types/typesData";
+// import { ServiceDataType } from "../types/typesData";
 
-interface DataService {
-    id: number,
-    attributes: ServiceDataType,
-}
+// interface DataService {
+//     id: number,
+//     attributes: ServiceDataType,
+// }
 
 const ServicesDetails = () => {
     const { id } = useParams()
-    const [data, setData] = useState<DataService>();
-    const printRef = useRef();
+    const [data, setData] = useState<any>();
+    const printRef = useRef<any>();
     const handlePrint = () => {
         const printContent = printRef.current;
         const windowToPrint = window.open('', '_blank');
@@ -61,7 +62,8 @@ const ServicesDetails = () => {
                         <RequiredNeeds data={data.attributes} />
                         <FooterServicesDetails data={data.attributes} />
                     </div>
-                    : null}
+                    : null
+                }
 
                 {
                     data &&

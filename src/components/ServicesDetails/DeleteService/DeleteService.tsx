@@ -4,13 +4,12 @@ import { setDelete } from "../../../store/user/userSlice";
 
 export type DeleteServiceProps = {
   id: number,
-  serviceType: "المرض" | "الزواج"
 };
-export default function DeleteService({ id, serviceType }: DeleteServiceProps) {
+export default function DeleteService({ id }: DeleteServiceProps) {
   const dispatch = useDispatch()
   const handelDelete = () => {
     dispatch(setDelete())
-    deleteItem(id, serviceType)
+    deleteItem(id)
   }
 
   return (

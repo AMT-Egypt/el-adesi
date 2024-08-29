@@ -3,13 +3,16 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/images/logo.jpg";
 import { fetchRegister } from "../functions/apis/register";
+import Spinner from "../components/Spinner";
+import { useState } from "react";
 
 const Register = () => {
     const myUrl = useNavigate()
+    const [loading,setLoading] = useState<boolean>(false)
     const { register, handleSubmit, formState: { errors } } = useForm()
     const onSubmit = (data: any) => {
         // console.log(data)
-        fetchRegister(data, myUrl)
+        fetchRegister(data, myUrl,setLoading)
     }
     return (
         <div className="flex flex-col items-center justify-center gap-4 w-full min-h-screen bg-fives py-8">
@@ -36,6 +39,11 @@ const Register = () => {
                         </div>
                         <div className="flex justify-center mt-3">
                             <button className="p-2 rounded-md bg-secondary text-primary">انشاء</button>
+                            <button disabled={loading} className={`p-2 rounded-md bg-secondary text-primary`}>
+                                {
+                                    loading ? <Spinner color={"primary"}/> : "انشاء"
+                                }
+                            </button>
                         </div>
                     </form>
                     <div className="flex justify-center mt-4 text-secondary">

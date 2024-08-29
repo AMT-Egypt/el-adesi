@@ -14,7 +14,7 @@ export default function OneCart({ fullName, nationalID, serviceType, id }: OneCa
   return (
     <div
       className="bg-fourth min-w-fit rounded-xl p-4 flex flex-col gap-2 relative">
-      <DeleteService id={id} serviceType={serviceType} />
+      <DeleteService id={id} />
       <Link
         onClick={() => dispatch(setTypeService(serviceType))}
         to={`/main/servicesDetails/${id}`}
@@ -28,7 +28,7 @@ export default function OneCart({ fullName, nationalID, serviceType, id }: OneCa
             {nationalID}
           </p>
           <p>
-            {serviceType == "illness" ? "مرض" : "زواج"}
+            {serviceType}
           </p>
         </div>
       </Link>

@@ -1,15 +1,12 @@
-export const deleteItem = async (id: string, serviceType: "illness" | "marriage") => {
-    try {
-        const response = await fetch(`https://json-server-jade-two.vercel.app/${serviceType}/${id}`, {
-            method: 'DELETE'
-        });
+import axios from "axios";
+import Cookie from "cookie-universal";
 
-        if (response.ok) {
-            console.log('Item deleted successfully');
-        } else {
-            throw new Error(`Error: ${response.status}`);
+export const deleteItem = (id: number) => {
+    const token = Cookie().get("token");
+    axios.delete(`https://simple-cyndi-ahmedmansour1234-967574d9.koyeb.app/api/services/${id}`,{
+        headers:{
+            "Authorization": `Bearer ${token}`,
         }
-    } catch (error) {
-        console.error('Error deleting the item:', error);
-    }
+    }).then(res=>console.log(res))
+    .catch(err=>console.log(err))
 };

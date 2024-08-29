@@ -8,11 +8,13 @@ import MonthlyIcome from "../Marriage/MonthlyIcome"
 import PersonalInfo from "../Marriage/PersonalInfo"
 import Research from "../Marriage/Research"
 import { useState } from "react"
+import { useSelector } from "react-redux"
+import Spinner from "../Spinner"
 
 const Illness = ({display}:{display:string}) => {
     const [allNeeds, setNeeds] = useState<any[]>([])
-    const [image, setImage] = useState<any | null>("")
-    const [errorImage, setErrorImage] = useState<boolean>(false)
+    const userInfo = useSelector((state:any)=>state.userInfo)
+    const [loading,setLoading] = useState<boolean>(false)
     const {register,handleSubmit,formState:{errors}} = useForm()
     const onSubmit = (data:any)=>{
         const Needs = allNeeds.map((ele)=>(
@@ -23,32 +25,27 @@ const Illness = ({display}:{display:string}) => {
                 Total : +ele.Total,
             }
         ))
-        if(!image){
-            setErrorImage(true)
-            return
-        }
         const allData = {
             ...data,
             Items:Needs,
             Status:"المرض",
             areaCultivation:"",
             landArea:"",
-            DescriptionOfAgriculturalLandInCaseOfCultivation:"",
+            DescriptionOfAgriculturalLandInCaseOfCultivation:"اخري",
             DoesHeOwnAgriculturalProperty:false,
             IsAnyLandBeingCultivated:false,
             MonthlyIncome: +data.MonthlyIncome,
             OtherSources : +data.OtherSources,
             TotalIncome : +data.TotalIncome,
             NumberOfChildren : +data.NumberOfChildren,
-            NationalNumberImage:image[0]
         }
         console.log(allData)
-        addItem(allData)
+        addItem(allData,userInfo.id,setLoading)
     }
     return (
         <div className={`${display==="illness"? "block" : "hidden"}`}>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <PersonalInfo register={register} errors={errors} errorImage={errorImage} setErrorImage={setErrorImage} image={image} setImage={setImage}/>
+                <PersonalInfo register={register} errors={errors}/>
                 <MonthlyIcome register={register} errors={errors}/>
                 <FamilyInfo register={register} errors={errors}/>
                 <div className="mt-5">
@@ -60,7 +57,11 @@ const Illness = ({display}:{display:string}) => {
                 <EstimatedBudget setNeeds={setNeeds}/>
                 <Research register={register} errors={errors}/>
                 <div className={`w-[300px] flex justify-end mt-4`}>
-                    <button className="p-1 px-3 rounded bg-primary text-fives">ارسل</button>
+                    <button disabled={loading} className={`p-1 ${loading ? "pt-2" : "pt-1"} px-3 rounded bg-primary text-fives`}>
+                        {
+                            loading ? <Spinner color="secondary"/> : "ارسل"
+                        }
+                    </button>
                 </div>
             </form>
         </div>

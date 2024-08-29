@@ -8,10 +8,11 @@ import OneCart from "../OneCart";
 // }
 
 export type CartsProps = {
-  allData: DataService[]
+  allData: any[],
+  filter:string
 };
-export default function Carts({ allData }: CartsProps) {
-  
+export default function Carts({ allData,filter }: CartsProps) {
+  // console.log(allData);
   return (
     <div className="flex gap-3 w-full flex-wrap">
       {
@@ -19,16 +20,16 @@ export default function Carts({ allData }: CartsProps) {
           <p>
             من فضلك قم ب اضافه بعض الخدمات
           </p> :
-          allData?.map(({ id, attributes }, index) => {
-            return (
+          allData?.map(({ id, attributes }, index) => (
+            attributes.Status.includes(filter) ? 
               <OneCart
                 id={id}
                 fullName={attributes?.QuadNameProvided}
                 nationalID={attributes?.NationalNumberProvided}
                 serviceType={attributes?.Status}
                 key={index} />
-            )
-          })
+            : null
+          ))
       }
     </div>
   );

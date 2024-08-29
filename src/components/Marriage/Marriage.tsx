@@ -10,6 +10,8 @@ import EstimatedBudget from "./EstimatedBudget";
 import Research from "./Research";
 import { useState } from "react";
 import { addItem } from "../../functions/apis/addItem";
+import { useSelector } from "react-redux";
+import Spinner from "../Spinner";
 
 interface IProp {
     display: string;
@@ -17,8 +19,8 @@ interface IProp {
 
 const Marriage = ({display}:IProp) => {
     const [allNeeds, setNeeds] = useState<any[]>([])
-    const [image, setImage] = useState<any | null>("")
-    const [errorImage, setErrorImage] = useState<boolean>(false)
+    const userInfo = useSelector((state:any)=>state.userInfo)
+    const [loading,setLoading] = useState<boolean>(false)
     const {register,handleSubmit,formState:{errors}} = useForm()
     const onSubmit = (data:any)=>{
         const Needs = allNeeds.map((ele)=>(
@@ -29,10 +31,6 @@ const Marriage = ({display}:IProp) => {
                 Total : +ele.Total,
             }
         ))
-        if(!image){
-            setErrorImage(true)
-            return
-        }
         const allData = {
             ...data,
             Items:Needs,
@@ -43,16 +41,15 @@ const Marriage = ({display}:IProp) => {
             OtherSources : +data.OtherSources,
             TotalIncome : +data.TotalIncome,
             NumberOfChildren : +data.NumberOfChildren,
-            NationalNumberImage:image[0],
             Status:"الزواج",
         }
         console.log(allData)
-        addItem(allData)
+        addItem(allData,userInfo.id,setLoading)
     }
     return (
         <div className={`${display==="marriage"? "block" : "hidden"}`}>
             <form onSubmit={handleSubmit(onSubmit)}>
-            <PersonalInfo register={register} errors={errors} errorImage={errorImage} setErrorImage={setErrorImage} image={image} setImage={setImage}/>
+            <PersonalInfo register={register} errors={errors}/>
                 <MonthlyIcome register={register} errors={errors}/>
                 <FamilyInfo register={register} errors={errors}/>
                 <LandInfo register={register} errors={errors}/>
@@ -60,7 +57,11 @@ const Marriage = ({display}:IProp) => {
                 <EstimatedBudget setNeeds={setNeeds}/>
                 <Research register={register} errors={errors}/>
                 <div className={`w-[300px] flex justify-end mt-4`}>
-                    <button className="p-1 px-3 rounded bg-primary text-fives">ارسل</button>
+                    <button disabled={loading} className={`p-1 ${loading ? "pt-2" : "pt-1"} px-3 rounded bg-primary text-fives`}>
+                        {
+                            loading ? <Spinner color="secondary"/> : "ارسل"
+                        }
+                    </button>
                 </div>
             </form>
         </div>

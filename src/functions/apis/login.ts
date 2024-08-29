@@ -8,7 +8,7 @@ interface IData {
     identifier:string;
     password:string
 }
-export const fetchLogin = (data:IData,setLog:React.Dispatch<React.SetStateAction<boolean>>,myUrl:NavigateFunction,dispatch:Dispatch<UnknownAction>) => {
+export const fetchLogin = (data:IData,setLog:React.Dispatch<React.SetStateAction<boolean>>,myUrl:NavigateFunction,dispatch:Dispatch<UnknownAction>,setLoading:React.Dispatch<React.SetStateAction<boolean>>) => {
     axios.post(`https://simple-cyndi-ahmedmansour1234-967574d9.koyeb.app/api/auth/local`,{...data})
     .then((res)=>{
         // console.log(res)
@@ -23,4 +23,5 @@ export const fetchLogin = (data:IData,setLog:React.Dispatch<React.SetStateAction
         console.log(err)
         setLog(true)
     })
+    .finally(()=>setLoading(false))
 }

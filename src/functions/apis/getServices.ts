@@ -6,20 +6,21 @@ import axios from 'axios';
 
 interface propsInterface {
     setData: React.Dispatch<SetStateAction<ServiceDataType[]>>,
+    setAllData: React.Dispatch<SetStateAction<ServiceDataType[]>>,
     userInfo: UserInfo,
-    Status?: any
 }
 
-export const GetServiceData = async ({setData, userInfo, Status}:propsInterface) => {
+export const GetServiceData = async ({setData,setAllData, userInfo}:propsInterface) => {
     const token = Cookie().get("token");
     try {
-        const { data } = await axios.get(`https://simple-cyndi-ahmedmansour1234-967574d9.koyeb.app/api/services?populate=*&filters[users][username][$eq]=${userInfo.username}${Status !== "الكل" ? `&filters[Status][$eq]=${Status}` : ""}`,{
+        const { data } = await axios.get(`https://simple-cyndi-ahmedmansour1234-967574d9.koyeb.app/api/services?populate=*&filters[users][username][$eq]=${userInfo.username}`,{
             headers:{
                 "Authorization": `Bearer ${token}`,
             }
         });
         
         setData(data.data);  // You can handle the data here
+        setAllData(data.data);  // You can handle the data here
     } catch (error) {
         console.error('Error fetching data:', error);
     }
