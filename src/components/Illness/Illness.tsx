@@ -17,6 +17,7 @@ const Illness = ({display}:{display:string}) => {
     const [loading,setLoading] = useState<boolean>(false)
     const {register,handleSubmit,formState:{errors}} = useForm()
     const onSubmit = (data:any)=>{
+        setLoading(true)
         const Needs = allNeeds.map((ele)=>(
             {
                 item : ele.item,

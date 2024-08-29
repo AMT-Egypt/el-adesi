@@ -11,6 +11,7 @@ const Register = () => {
     const [loading,setLoading] = useState<boolean>(false)
     const { register, handleSubmit, formState: { errors } } = useForm()
     const onSubmit = (data: any) => {
+        setLoading(true)
         // console.log(data)
         fetchRegister(data, myUrl,setLoading)
     }
