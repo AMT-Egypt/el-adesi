@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AgriculturalData from "../components/ServicesDetails/AgriculturalData";
 import DiseaseDetails from "../components/ServicesDetails/DiseaseDetails";
@@ -9,7 +9,6 @@ import IncomeData from "../components/ServicesDetails/IncomeData";
 import PersonalData from "../components/ServicesDetails/PersonalData";
 import RequiredNeeds from "../components/ServicesDetails/RequiredNeeds";
 import { fetchOneData } from "../functions/apis/getOne";
-import { ServiceDataType } from "../types/typesData";
 
 interface DataService {
     id: number,
@@ -18,28 +17,7 @@ interface DataService {
 
 const ServicesDetails = () => {
     const { id } = useParams()
-    const [data, setData] = useState<DataService>();
-    const printRef = useRef();
-    const handlePrint = ()=>{
-        const printContent = printRef.current;
-        const windowToPrint = window.open('', '_blank');
-        windowToPrint?.document.write(`
-            <html>
-            <head>
-                <title>Print</title>
-                <style>
-                </style>
-            </head>
-            <body>
-                ${printContent?.innerHTML}
-            </body>
-            </html>
-        `);
-        windowToPrint?.document.close();
-        windowToPrint?.focus();
-        windowToPrint?.print();
-        windowToPrint?.close();
-    }
+    const [data, setData] = useState<ServiceDataType>()
 
     useEffect(() => {
         if (id) {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import InputComponent from "./InputComponent";
@@ -5,9 +6,14 @@ import InputComponent from "./InputComponent";
 interface IProp {
     register:UseFormRegister<FieldValues>;
     errors: FieldErrors<FieldValues>;
+    image:any,
+    setImage:React.Dispatch<any>,
+    errorImage:boolean,
+    setErrorImage:React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const PersonalInfo = ({register,errors}:IProp) => {
+const PersonalInfo = ({register,errors,image,setImage,errorImage,setErrorImage}:IProp) => {
+    console.log(image)
     return (
         <div className="mt-5">
             <h1 className="font-semibold">بيانات شخصية خاصة بمقدمه الطلب: </h1>
@@ -45,9 +51,32 @@ const PersonalInfo = ({register,errors}:IProp) => {
                     {errors.BreadwinnerNameProvided?.type==="required" && <p className="text-sm text-red-500">من فضلك ادخل اسم عائل الاسره</p>}
                 </div>
             </div>
-            <div className="mt-2">
-                <InputComponent register={register} type="text"  regName="WorkProvided" nameInput="الوظيفة" contact="jop"/>
-                {errors.WorkProvided?.type==="required" && <p className="text-sm text-red-500">من فضلك ادخل الوظيفة</p>}
+            <div className="mt-3 flex flex-wrap gap-2 md:gap-6">
+                <div>
+                    <InputComponent register={register} type="text"  regName="WorkProvided" nameInput="الوظيفة" contact="jop"/>
+                    {errors.WorkProvided?.type==="required" && <p className="text-sm text-red-500">من فضلك ادخل الوظيفة</p>}
+                </div>
+                <div className={`${"flex items-center justify-between w-[300px]" }`}>
+                    <div>
+                        <p className="text-primary mb-1">صورة الرقم القومي</p>
+                        {/* <label htmlFor="image" className="bg-green-500 text-white p-2 rounded block w-fit cursor-pointer" >اختار صورة</label><br/> */}
+                        <input type="file" id="image" onChange={(e)=>(
+                            e.target.files ? (
+                                setImage(e.target.files),
+                                setErrorImage(false)
+                            )
+                            : setErrorImage(true)
+                        )} className="w-full h-10 rounded-md border px-2 pt-1 bg-white"/>
+                        {errorImage && <p className="text-sm text-red-500">من فضلك صورة الرقم القومي</p>}
+                    </div>
+                    {/* <div className="w-24 h-20">
+                        {
+                            image ? 
+                            <img src={URL.createObjectURL(image[0])} alt="image" className="w-24 h-20" />
+                            :null
+                        }
+                    </div> */}
+                </div>
             </div>
         </div>
     );

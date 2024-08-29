@@ -9,7 +9,7 @@ import HouseAndNeeds from "./HouseAndNeeds";
 import EstimatedBudget from "./EstimatedBudget";
 import Research from "./Research";
 import { useState } from "react";
-// import { addItem } from "../../functions/apis/addItem";
+import { addItem } from "../../functions/apis/addItem";
 
 interface IProp {
     display: string;
@@ -17,16 +17,42 @@ interface IProp {
 
 const Marriage = ({display}:IProp) => {
     const [allNeeds, setNeeds] = useState<any[]>([])
+    const [image, setImage] = useState<any | null>("")
+    const [errorImage, setErrorImage] = useState<boolean>(false)
     const {register,handleSubmit,formState:{errors}} = useForm()
     const onSubmit = (data:any)=>{
-        const allData = {...data,Items:allNeeds,Status:"الزواج"}
+        const Needs = allNeeds.map((ele)=>(
+            {
+                item : ele.item,
+                number : +ele.number,
+                PriceItem : +ele.PriceItem,
+                Total : +ele.Total,
+            }
+        ))
+        if(!image){
+            setErrorImage(true)
+            return
+        }
+        const allData = {
+            ...data,
+            Items:Needs,
+            caseData : null,
+            DoesHeOwnAgriculturalProperty:data.DoesHeOwnAgriculturalProperty==="true" ? true : false,
+            IsAnyLandBeingCultivated:data.IsAnyLandBeingCultivated==="true" ? true : false,
+            MonthlyIncome: +data.MonthlyIncome,
+            OtherSources : +data.OtherSources,
+            TotalIncome : +data.TotalIncome,
+            NumberOfChildren : +data.NumberOfChildren,
+            NationalNumberImage:image[0],
+            Status:"الزواج",
+        }
         console.log(allData)
-        // addItem(allData)
+        addItem(allData)
     }
     return (
         <div className={`${display==="marriage"? "block" : "hidden"}`}>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <PersonalInfo register={register} errors={errors}/>
+            <PersonalInfo register={register} errors={errors} errorImage={errorImage} setErrorImage={setErrorImage} image={image} setImage={setImage}/>
                 <MonthlyIcome register={register} errors={errors}/>
                 <FamilyInfo register={register} errors={errors}/>
                 <LandInfo register={register} errors={errors}/>

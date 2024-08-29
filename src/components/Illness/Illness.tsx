@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useForm } from "react-hook-form"
-// import { addItem } from "../../functions/apis/addItem"
+import { addItem } from "../../functions/apis/addItem"
 import EstimatedBudget from "../Marriage/EstimatedBudget"
 import FamilyInfo from "../Marriage/FamilyInfo"
 import HouseAndNeeds from "../Marriage/HouseAndNeeds"
@@ -11,16 +11,44 @@ import { useState } from "react"
 
 const Illness = ({display}:{display:string}) => {
     const [allNeeds, setNeeds] = useState<any[]>([])
+    const [image, setImage] = useState<any | null>("")
+    const [errorImage, setErrorImage] = useState<boolean>(false)
     const {register,handleSubmit,formState:{errors}} = useForm()
     const onSubmit = (data:any)=>{
-        const allData = {...data,Items:allNeeds,Status:"المرض"}
+        const Needs = allNeeds.map((ele)=>(
+            {
+                item : ele.item,
+                number : +ele.number,
+                PriceItem : +ele.PriceItem,
+                Total : +ele.Total,
+            }
+        ))
+        if(!image){
+            setErrorImage(true)
+            return
+        }
+        const allData = {
+            ...data,
+            Items:Needs,
+            Status:"المرض",
+            areaCultivation:"",
+            landArea:"",
+            DescriptionOfAgriculturalLandInCaseOfCultivation:"",
+            DoesHeOwnAgriculturalProperty:false,
+            IsAnyLandBeingCultivated:false,
+            MonthlyIncome: +data.MonthlyIncome,
+            OtherSources : +data.OtherSources,
+            TotalIncome : +data.TotalIncome,
+            NumberOfChildren : +data.NumberOfChildren,
+            NationalNumberImage:image[0]
+        }
         console.log(allData)
-        // addItem(allData)
+        addItem(allData)
     }
     return (
         <div className={`${display==="illness"? "block" : "hidden"}`}>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <PersonalInfo register={register} errors={errors}/>
+                <PersonalInfo register={register} errors={errors} errorImage={errorImage} setErrorImage={setErrorImage} image={image} setImage={setImage}/>
                 <MonthlyIcome register={register} errors={errors}/>
                 <FamilyInfo register={register} errors={errors}/>
                 <div className="mt-5">

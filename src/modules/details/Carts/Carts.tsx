@@ -1,10 +1,11 @@
-import { ServiceDataType } from "../../../types/typesData";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// import { ServiceDataType } from "../../../types/typesData";
 import OneCart from "../OneCart";
 
-interface DataService {
-  id: number,
-  attributes: ServiceDataType,
-}
+// interface DataService {
+//   id: number,
+//   attributes: ServiceDataType,
+// }
 
 export type CartsProps = {
   allData: DataService[]
