@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import NavBarService from "../components/NavBarService";
 import Carts from "../modules/details/Carts";
 import { GetServiceData } from "../functions/apis/getServices";
@@ -13,7 +13,7 @@ interface DataService {
 
 
 export default function Services() {
-  const [data, setData] = useState<ServiceDataType[]>([]);
+  const [data, setData] = useState<DataService[]>([]);
   const [filter, setFilter] = useState<string>("الكل");
   const [search, setSearch] = useState<string>("")
 
@@ -24,7 +24,7 @@ export default function Services() {
 
   useEffect(() => {
     if (search !== "") {
-      const filteredData = data.filter(person => person.QuadNameProvided.includes(search));
+      const filteredData = data?.filter(person => person.attributes.QuadNameProvided.includes(search));
       setData(filteredData)
     }
   }, [search, data])
