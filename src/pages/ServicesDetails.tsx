@@ -31,7 +31,7 @@ const ServicesDetails = () => {
                 <style>
                 </style>
             </head>
-            <body>
+            <body dir="rtl">
                 ${printContent?.innerHTML}
             </body>
             </html>
