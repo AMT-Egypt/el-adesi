@@ -6,7 +6,7 @@ export type FooterServicesDetailsProps = {
 export default function FooterServicesDetails({ data }: FooterServicesDetailsProps,) {
   const { Researcher, ResearcherSaw } = data
   return (
-    <div className="w-full flex flex-col gap-2">
+    <div className="w-full footerService flex flex-col gap-2">
       <p>
         راي الباحث : {ResearcherSaw}
       </p>
