@@ -38,7 +38,6 @@ const Register = () => {
                             {errors.password?.type === "minLength" && <p className="text-sm text-red-500">كلمة المرور يجب ان لا تقل عن 6 حروف</p>}
                         </div>
                         <div className="flex justify-center mt-3">
-                            <button className="p-2 rounded-md bg-secondary text-primary">انشاء</button>
                             <button disabled={loading} className={`p-2 rounded-md bg-secondary text-primary`}>
                                 {
                                     loading ? <Spinner color={"primary"}/> : "انشاء"
