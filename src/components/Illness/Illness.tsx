@@ -41,7 +41,7 @@ const Illness = ({display}:{display:string}) => {
             NumberOfChildren : +data.NumberOfChildren,
         }
         console.log(allData)
-        addItem(allData,userInfo.id,setLoading)
+        addItem(allData,userInfo,setLoading)
     }
     return (
         <div className={`${display==="illness"? "block" : "hidden"}`}>

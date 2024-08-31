@@ -45,7 +45,7 @@ const Marriage = ({display}:IProp) => {
             Status:"الزواج",
         }
         console.log(allData)
-        addItem(allData,userInfo.id,setLoading)
+        addItem(allData,userInfo,setLoading)
     }
     return (
         <div className={`${display==="marriage"? "block" : "hidden"}`}>
