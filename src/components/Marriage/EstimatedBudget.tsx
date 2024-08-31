@@ -6,11 +6,9 @@ const EstimatedBudget = ({setNeeds}:{setNeeds:any}) => {
     const [item,setItem] = useState("")
     const [number,setNumber] = useState("")
     const [unitPrice,setUnitPrice] = useState("")
-    const [total,setTotal] = useState("")
     const [itemError,setItemError] = useState(false)
     const [numberError,setNumberError] = useState(false)
     const [unitError,setUnitError] = useState(false)
-    const [totalError,setTatalError] = useState(false)
     const [AllData,setAll] = useState<any[]>([])
 
     const onsubmit = ()=>{
@@ -23,17 +21,14 @@ const EstimatedBudget = ({setNeeds}:{setNeeds:any}) => {
         if(unitPrice.length <= 0) {
             setUnitError(true)
         }
-        if(total.length <= 0) {
-            setTatalError(true)
-        }
         else{
-            const data = {item,number,unitPrice,total}
+            const data = {item,number,unitPrice,total:+number * +unitPrice}
             setAll(prev=>[...prev,data])
             const needsData = {
                 item,
                 number,
                 PriceItem:unitPrice,
-                Total:total
+                Total: +number * +unitPrice,
             }
             setNeeds((prev:any)=>[...prev,needsData])
         }
@@ -84,7 +79,7 @@ const EstimatedBudget = ({setNeeds}:{setNeeds:any}) => {
                                 } id={"unitPrice"} className="mt-1 outline-none w-[300px] border px-3 rounded-md h-10" />
                             {unitError && <p className="text-sm text-red-500">من فضلك ادخل سعر الوحدة</p>}
                         </div>
-                        <div>
+                        {/* <div>
                             <label htmlFor={"totalA"} className="text-primary">الاجمالى</label><br />
                             <input type={"number"} onChange={(e)=>
                                 e.target.value.length > 0?
@@ -95,7 +90,7 @@ const EstimatedBudget = ({setNeeds}:{setNeeds:any}) => {
                                     : setTatalError(true)
                                 } id={"totalA"} className="mt-1 outline-none w-[300px] border px-3 rounded-md h-10" />
                             {totalError && <p className="text-sm text-red-500">من فضلك ادخل الاجمالى</p>}
-                        </div>
+                        </div> */}
                     </div>
                     <div className="flex justify-end w-[300px]">
                         <button type="button" onClick={()=>onsubmit()} className="px-3 mt-3 py-1 text-white bg-green-500 rounded-md hover:bg-green-600">حفظ</button>

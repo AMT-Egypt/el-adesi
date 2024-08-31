@@ -40,7 +40,7 @@ const Marriage = ({display}:IProp) => {
             IsAnyLandBeingCultivated:data.IsAnyLandBeingCultivated==="true" ? true : false,
             MonthlyIncome: +data.MonthlyIncome,
             OtherSources : +data.OtherSources,
-            TotalIncome : +data.TotalIncome,
+            TotalIncome : +data.MonthlyIncome + +data.OtherSources,
             NumberOfChildren : +data.NumberOfChildren,
             Status:"الزواج",
         }

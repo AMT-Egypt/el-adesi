@@ -14,7 +14,7 @@ export type CartsProps = {
 export default function Carts({ allData,filter }: CartsProps) {
   // console.log(allData);
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 my-5">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 my-5">
       {
         allData.length == 0 ?
           <p>

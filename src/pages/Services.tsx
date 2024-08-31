@@ -22,13 +22,13 @@ export default function Services() {
   const userInfo = useSelector((state:any)=>state.userInfo)
   useEffect(()=>{
     GetServiceData({setData,setAllData, userInfo})
-  },[userInfo, data, myData])
+  },[userInfo])
 
   useEffect(() => {
-    if (search !== "") {
+      // console.log(search)
       const filteredData = myData?.filter(person => person.attributes.QuadNameProvided.includes(search));
+      // console.log(filteredData)
       setData([...filteredData])
-    }
   }, [search])
 
   return (

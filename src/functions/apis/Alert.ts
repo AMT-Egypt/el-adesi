@@ -2,10 +2,15 @@
 import Swal from "sweetalert2";
 
 
-export const alert = (title:string,text:string,icon:any,finall?:(() => void) | null | undefined)=>{
+export const alert = (title:string,text:string,icon:any,reload?:boolean)=>{
     Swal.fire({
         title,
         text,
         icon,
-    }).finally(finall);
+    })
+    .then((result) => {
+        if (reload && result.isConfirmed) {
+            window.location.reload()
+        }
+    })
 }

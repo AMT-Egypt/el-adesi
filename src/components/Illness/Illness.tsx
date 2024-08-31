@@ -37,7 +37,7 @@ const Illness = ({display}:{display:string}) => {
             IsAnyLandBeingCultivated:false,
             MonthlyIncome: +data.MonthlyIncome,
             OtherSources : +data.OtherSources,
-            TotalIncome : +data.TotalIncome,
+            TotalIncome : +data.MonthlyIncome + +data.OtherSources,
             NumberOfChildren : +data.NumberOfChildren,
         }
         console.log(allData)
