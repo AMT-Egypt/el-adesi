@@ -10,7 +10,7 @@ export default function FooterServicesDetails({ data }: FooterServicesDetailsPro
       <p>
         راي الباحث : {ResearcherSaw}
       </p>
-      <div className="grid grid-cols-3 gap-3 font-medium">
+      <div className="grid grid-cols-1 lg:grid-cols-3 mt-5 bg-primary text-white rounded-md p-7 gap-3 font-medium">
         <div>
           <p>الباحث</p>
           <p>{Researcher}</p>

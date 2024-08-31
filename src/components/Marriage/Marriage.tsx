@@ -44,7 +44,6 @@ const Marriage = ({display}:IProp) => {
             NumberOfChildren : +data.NumberOfChildren,
             Status:"الزواج",
         }
-        console.log(allData)
         addItem(allData,userInfo,setLoading)
     }
     return (

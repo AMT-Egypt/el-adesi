@@ -13,7 +13,7 @@ export default function OneCart({ fullName, nationalID, serviceType, id }: OneCa
   const dispatch = useDispatch()
   return (
     <div
-      className="bg-fourth min-w-fit rounded-xl p-4 flex flex-col gap-2 relative">
+      className="bg-primary text-white min-w-fit rounded-xl p-4 flex flex-col gap-2 relative">
       <DeleteService id={id} />
       <Link
         onClick={() => dispatch(setTypeService(serviceType))}

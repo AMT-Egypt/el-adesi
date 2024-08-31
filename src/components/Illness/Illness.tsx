@@ -40,7 +40,6 @@ const Illness = ({display}:{display:string}) => {
             TotalIncome : +data.MonthlyIncome + +data.OtherSources,
             NumberOfChildren : +data.NumberOfChildren,
         }
-        console.log(allData)
         addItem(allData,userInfo,setLoading)
     }
     return (

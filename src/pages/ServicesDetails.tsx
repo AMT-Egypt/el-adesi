@@ -30,7 +30,7 @@ const ServicesDetails = () => {
                 <title>Print</title>
                 <style>
                 .footerService{
-                display: flex
+                display: flex;
                 }
                 </style>
             </head>
@@ -52,7 +52,7 @@ const ServicesDetails = () => {
     }, [id])
 
     return (
-        <div className="flex justify-center min-h-[81.5vh] py-6 bg-secondary">
+        <div className="flex justify-center min-h-[81.5vh] py-6">
             <div className="container flex flex-col gap-8">
                 <h1 className="text-2xl font-bold text-center text-primary">معلومات الحالة</h1>
                 {data ?
@@ -70,7 +70,7 @@ const ServicesDetails = () => {
 
                 {
                     data &&
-                    <button onClick={handlePrint} className="bg-primary text-white py-2 rounded mt-5">اطبع الحالة</button>
+                    <button onClick={handlePrint} className="bg-primary text-white py-2 rounded mt-2.5">اطبع الحالة</button>
                 }
             </div>
         </div>
