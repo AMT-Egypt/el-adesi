@@ -7,7 +7,6 @@ const Froms = () => {
     // const [allNeeds, setNeeds] = useState<any[]>([])
     // const {register,handleSubmit,formState:{errors}} = useForm()
     // const onSubmit = (data:any)=>{
-    //     console.log({...data,estimatedBudget:allNeeds})
     //     addItem(data.serveiceType,{...data,estimatedBudget:allNeeds})
     // }
     return (

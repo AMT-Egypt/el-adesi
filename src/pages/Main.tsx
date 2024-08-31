@@ -7,7 +7,7 @@ import ServicesDetails from "./ServicesDetails";
 
 const Main = () => {
     return (
-        <div className='min-h-screen w-full flex flex-col justify-between'>
+        <div className='min-h-screen w-full flex flex-col justify-between bg-secondary'>
             <Header />
             <Routes>
                 <Route path="/" element={<Froms />} />

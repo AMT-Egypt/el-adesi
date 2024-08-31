@@ -16,7 +16,6 @@ const Login = () => {
     const dispatch = useDispatch()
     const onSubmit = (data: any) => {
         setLoading(true)
-        // console.log(data)
         fetchLogin(data,setLog,myUrl,dispatch,setLoading)
         // if (data.email === "admin@gmail.com" && data.password === "montaser2024") {
         //     localStorage.userToken = "true"

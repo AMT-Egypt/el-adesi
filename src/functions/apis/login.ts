@@ -11,7 +11,6 @@ interface IData {
 export const fetchLogin = (data:IData,setLog:React.Dispatch<React.SetStateAction<boolean>>,myUrl:NavigateFunction,dispatch:Dispatch<UnknownAction>,setLoading:React.Dispatch<React.SetStateAction<boolean>>) => {
     axios.post(`https://simple-cyndi-ahmedmansour1234-967574d9.koyeb.app/api/auth/local`,{...data})
     .then((res)=>{
-        // console.log(res)
         const cook = Cookie()
         cook.set("token",res.data.jwt)
         cook.set("user",JSON.stringify(res.data.user))
@@ -19,8 +18,7 @@ export const fetchLogin = (data:IData,setLog:React.Dispatch<React.SetStateAction
         setLog(false)
         myUrl("/main")
     })
-    .catch((err)=>{
-        console.log(err)
+    .catch(()=>{
         setLog(true)
     })
     .finally(()=>setLoading(false))

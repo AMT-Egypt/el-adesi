@@ -12,7 +12,6 @@ export type CartsProps = {
   filter:string
 };
 export default function Carts({ allData,filter }: CartsProps) {
-  // console.log(allData);
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 my-5">
       {

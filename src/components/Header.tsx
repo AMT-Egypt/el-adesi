@@ -4,11 +4,10 @@ import { Link, useNavigate } from "react-router-dom"
 import logo from "../assets/images/logo.jpg"
 import { useEffect, useState } from "react"
 import Cookie from "cookie-universal"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { addUser, deleteUser } from "../store/user/userInfo"
 
 const Header = () => {
-    const userInfo = useSelector((state:any)=>state.userInfo)
     const dispatch = useDispatch()
     const [display,setDisplay] = useState("hidden")
     const myUrl = useNavigate()
@@ -19,7 +18,6 @@ const Header = () => {
         dispatch(deleteUser())
         myUrl("/login")
     }
-    console.log("user => ",userInfo)
     useEffect(()=>{
         dispatch(addUser(cook.get("user")))
     },[])
@@ -27,10 +25,10 @@ const Header = () => {
         <div className="flex justify-center w-full py-3 bg-primary">
             <div className="container">
                 <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
+                    <Link to="/" className="flex items-center gap-3">
                         <img src={logo} alt="logo" className="w-10 h-10 rounded-full" />
                         <h1 className="text-fives">العديسي</h1>
-                    </div>
+                    </Link>
                     <div onClick={()=>setDisplay(display==="flex" ? "hidden" : "flex")} className="flex flex-col gap-1 cursor-pointer sm:hidden">
                         <span className="block w-6 h-[2px] rounded bg-fives"></span>
                         <span className="block w-6 h-[2px] rounded bg-fives"></span>

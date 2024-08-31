@@ -38,7 +38,6 @@ const EstimatedBudget = ({setNeeds}:{setNeeds:any}) => {
             setNeeds((prev:any)=>[...prev,needsData])
         }
     }
-    console.log(AllData)
     return (
         <div className="mt-5">
             <h1 className="font-semibold">الموازنه التقديرية للاحتياجات المطلوبة:</h1>
