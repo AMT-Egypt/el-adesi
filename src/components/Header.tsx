@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Link, useNavigate } from "react-router-dom"
 import logo from "../assets/images/logo.jpg"
 import { useEffect, useState } from "react"
@@ -25,7 +24,7 @@ const Header = () => {
         <div className="flex justify-center w-full py-3 bg-primary">
             <div className="container">
                 <div className="flex items-center justify-between">
-                    <Link to="/" className="flex items-center gap-3">
+                    <Link to="/main" className="flex items-center gap-3">
                         <img src={logo} alt="logo" className="w-10 h-10 rounded-full" />
                         <h1 className="text-fives">العديسي</h1>
                     </Link>
