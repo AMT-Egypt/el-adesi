@@ -22,7 +22,7 @@ export default function Services() {
   const userInfo = useSelector((state:any)=>state.userInfo)
   useEffect(()=>{
     GetServiceData({setData,setAllData, userInfo})
-  },[userInfo])
+  },[userInfo, data, myData])
 
   useEffect(() => {
     if (search !== "") {

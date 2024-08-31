@@ -1,5 +1,6 @@
 import axios from "axios";
 import Cookie from "cookie-universal";
+import { alert } from "./Alert";
 
 export const deleteItem = (id: number) => {
     const token = Cookie().get("token");
@@ -7,6 +8,10 @@ export const deleteItem = (id: number) => {
         headers:{
             "Authorization": `Bearer ${token}`,
         }
-    }).then(res=>console.log(res))
-    .catch(err=>console.log(err))
+    }).then(()=>{
+        alert("نجاح","تم حذف الخدمة بنجاح","success")
+    })
+    .catch(()=>{
+        alert("خطأ","حدث خطأ اثناء حذف الخدمة","error")
+    })
 };
