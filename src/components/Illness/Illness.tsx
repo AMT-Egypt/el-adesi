@@ -16,19 +16,13 @@ const Illness = ({display}:{display:string}) => {
     const userInfo = useSelector((state:any)=>state.userInfo)
     const [loading,setLoading] = useState<boolean>(false)
     const {register,handleSubmit,formState:{errors}} = useForm()
+    const [cancel,setCancel] = useState<boolean>(false)
+    // console.log(allNeeds)
     const onSubmit = (data:any)=>{
         setLoading(true)
-        const Needs = allNeeds.map((ele)=>(
-            {
-                item : ele.item,
-                number : +ele.number,
-                PriceItem : +ele.PriceItem,
-                Total : +ele.Total,
-            }
-        ))
         const allData = {
             ...data,
-            Items:Needs,
+            Items:allNeeds,
             Status:"المرض",
             areaCultivation:"",
             landArea:"",
@@ -54,14 +48,15 @@ const Illness = ({display}:{display:string}) => {
                     {errors.caseData?.type==="required" && <p className="text-sm text-red-500">من فضلك ادخل بيانات الحالة المرضية</p>}
                 </div>
                 <HouseAndNeeds register={register} errors={errors}/>
-                <EstimatedBudget setNeeds={setNeeds}/>
+                <EstimatedBudget setNeeds={setNeeds} cancel={cancel}/>
                 <Research register={register} errors={errors}/>
-                <div className={`w-[300px] flex justify-end mt-4`}>
+                <div className={`w-[300px] flex justify-end mt-4 gap-5`}>
                     <button disabled={loading} className={`p-1 ${loading ? "pt-2" : "pt-1"} px-3 rounded bg-primary text-fives`}>
                         {
                             loading ? <Spinner color="secondary"/> : "ارسل"
                         }
                     </button>
+                    <button onClick={()=>setCancel(true)} type={"reset"} className="px-3 py-1 text-white bg-red-500 rounded">الغاء</button>
                 </div>
             </form>
         </div>

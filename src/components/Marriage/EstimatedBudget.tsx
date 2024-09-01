@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TableNeeds from "./TableNeeds";
 
-const EstimatedBudget = ({setNeeds}:{setNeeds:any}) => {
+const EstimatedBudget = ({setNeeds,cancel}:{setNeeds:any,cancel:boolean}) => {
     const [item,setItem] = useState("")
     const [number,setNumber] = useState("")
     const [unitPrice,setUnitPrice] = useState("")
@@ -22,17 +23,24 @@ const EstimatedBudget = ({setNeeds}:{setNeeds:any}) => {
             setUnitError(true)
         }
         else{
-            const data = {item,number,unitPrice,total:+number * +unitPrice}
-            setAll(prev=>[...prev,data])
-            const needsData = {
+            const data = {
                 item,
-                number,
-                PriceItem:unitPrice,
+                number: +number,
+                PriceItem:+unitPrice,
                 Total: +number * +unitPrice,
             }
-            setNeeds((prev:any)=>[...prev,needsData])
+            setAll(prev=>[...prev,data])
         }
     }
+    useEffect(()=>{
+        setNeeds([...AllData])
+    },[AllData])
+
+    useEffect(()=>{
+        if(cancel){
+            setAll([])
+        }
+    },[cancel])
     return (
         <div className="mt-5">
             <h1 className="font-semibold">الموازنه التقديرية للاحتياجات المطلوبة:</h1>
@@ -95,7 +103,7 @@ const EstimatedBudget = ({setNeeds}:{setNeeds:any}) => {
                         <button type="button" onClick={()=>onsubmit()} className="px-3 mt-3 py-1 text-white bg-green-500 rounded-md hover:bg-green-600">حفظ</button>
                     </div>
             </div>
-            <TableNeeds needs={AllData} />
+            <TableNeeds needs={AllData} setAll={setAll}/>
         </div>
     );
 }

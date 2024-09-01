@@ -13,7 +13,7 @@ export const addItem = async (data:any,userInfo:any,setLoading:React.Dispatch<Re
     });
 
     if (res.data.data.length === 10) {
-        return alert("خطأ","لقد تم استنفاد جميع خدماتك المتاحة.","error",true);
+        return alert("خطأ","لقد تم استنفاد جميع خدماتك المتاحة.","error");
     }
     else{
         axios.post(`https://simple-cyndi-ahmedmansour1234-967574d9.koyeb.app/api/services`,
@@ -34,7 +34,7 @@ export const addItem = async (data:any,userInfo:any,setLoading:React.Dispatch<Re
             }
         })
         .then(()=>{
-            alert("نجاح","تم اضافة خدماتك بنجاح","success",true)
+            alert("نجاح","تم اضافة خدماتك بنجاح","success")
         })
         .catch(()=>{
             alert("خطأ","حدث خطأ اثناء اضافة الخدمة","error")

@@ -2,16 +2,21 @@
 
 import { useMemo } from "react";
 
-const TableNeeds = ({needs}:{needs:any[]}) => {
+const TableNeeds = ({needs,setAll}:{needs:any[],setAll:React.Dispatch<React.SetStateAction<any[]>>}) => {
     
     const sum = useMemo(()=>{
         let total = 0
         needs.forEach(need => {
-            total += +need.total
+            total += +need.Total
         })
         return total
     },[needs])
     
+    const deleteItem = (id:number)=>{
+        const data = needs.filter((_item,index)=>index!==+id )
+        // console.log(data)
+        setAll([...data])
+    }
     return (
         <div>
             {
@@ -27,6 +32,7 @@ const TableNeeds = ({needs}:{needs:any[]}) => {
                                     <th className="border border-primary p-2">العدد</th>
                                     <th className="border border-primary p-2">سعر الوحدة</th>
                                     <th className="border border-primary p-2">الاجمالى</th>
+                                    <th className="border border-primary p-2">الحدث</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -36,8 +42,11 @@ const TableNeeds = ({needs}:{needs:any[]}) => {
                                         <td className="border text-center border-primary p-2">{need.item}</td>
                                         <td className="border text-center border-primary p-2">بالعدد</td>
                                         <td className="border text-center border-primary p-2">{need.number}</td>
-                                        <td className="border text-center border-primary p-2">{need.unitPrice}</td>
-                                        <td className="border text-center border-primary p-2">{need.total}</td>
+                                        <td className="border text-center border-primary p-2">{need.PriceItem}</td>
+                                        <td className="border text-center border-primary p-2">{need.Total}</td>
+                                        <td className="border text-center border-primary p-2">
+                                            <button type="button" onClick={()=>deleteItem(index)} className="p-1 px-2 bg-red-500 text-white rounded-md">حذف</button>
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
