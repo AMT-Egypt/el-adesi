@@ -49,6 +49,7 @@ const ServicesDetails = () => {
                 justify-content: center;
                 gap: 20px;
                 margin-top: 25px
+                gap: 30px;
                 }
                 </style>
             </head>
