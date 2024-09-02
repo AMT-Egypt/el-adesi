@@ -29,8 +29,26 @@ const ServicesDetails = () => {
             <head>
                 <title>Print</title>
                 <style>
+                .title-data{
+                margin-bottom: 30px;
+                text-align: center;
+                font-weight: bold;
+                }
+                .personalData{
+                display: flex;
+                gap: 15px;
+                flex-wrap: wrap;
+                margin-bottom: 50px;
+                }
+                .personalData p{
+                margin: 0px 25px;
+                }
                 .footerService{
                 display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+                margin-top: 25px
                 }
                 </style>
             </head>

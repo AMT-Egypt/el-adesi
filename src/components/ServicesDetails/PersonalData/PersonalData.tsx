@@ -7,8 +7,8 @@ export default function PersonalData({ data }: PersonalDataProps) {
   const { QuadNameProvided, NationalNumberProvided, SubmissionDate, AdressProvided, phoneNumberProvided, BreadwinnerNameProvided, WorkProvided } = data
   return (
     <div className="w-full flex flex-col gap-2">
-      <p className="font-semibold">البيانات الشخصيه</p>
-      <div className="grid sm:grid-cols-2 grid-cols-1 gap-y-1">
+      <p className="title-data font-semibold">البيانات الشخصيه</p>
+      <div className="personalData grid sm:grid-cols-2 grid-cols-1 gap-y-1">
         <p>
           الاسم : {QuadNameProvided}
         </p>

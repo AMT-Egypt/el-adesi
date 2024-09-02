@@ -8,13 +8,13 @@ export default function RequiredNeeds({ data }: RequiredNeedsProps) {
   const totalSum = Items.reduce((acc, curr) => acc + +curr.Total, 0);
   return (
     <div className="w-full flex flex-col gap-2">
-      <p className="font-semibold">الاحتياجات المطلوبة</p>
-      <div className="grid grid-cols-1 gap-y-1">
+      <p className="title-data font-semibold">الاحتياجات المطلوبة</p>
+      <div className="personalData grid grid-cols-1 gap-y-1">
         <p>
           الوصف : {Requirements}
         </p>
       </div>
-      <p className="font-semibold">
+      <p className="title-data font-semibold">
         المتطلبات
       </p>
       <ul>

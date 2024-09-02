@@ -6,11 +6,11 @@ export type FooterServicesDetailsProps = {
 export default function FooterServicesDetails({ data }: FooterServicesDetailsProps,) {
   const { Researcher, ResearcherSaw } = data
   return (
-    <div className="w-full footerService flex flex-col gap-2">
-      <p>
+    <div className="w-full flex flex-col">
+      <p className="w-full block">
         راي الباحث : {ResearcherSaw}
       </p>
-      <div className="grid grid-cols-1 lg:grid-cols-3 mt-5 bg-primary text-white rounded-md p-7 gap-3 font-medium">
+      <div className="footerService grid grid-cols-1 lg:grid-cols-3 mt-5 bg-primary text-white rounded-md p-7 gap-3 font-medium">
         <div>
           <p>الباحث</p>
           <p>{Researcher}</p>
